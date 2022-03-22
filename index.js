@@ -56,11 +56,13 @@ function RequestGuard(interceptors, cfg = {}) {
       this.addEventListener(
         'readystatechange',
         () => {
-          for (let interceptor of interceptors) {
-            interceptor(this);
-          }
-          if (interceptorCalls.hasOwnProperty(this.status)) {
-            interceptorCalls[this.status](this);
+          if (this.readyState === 4) {
+            for (let interceptor of interceptors) {
+              interceptor(this);
+            }
+            if (interceptorCalls.hasOwnProperty(this.status)) {
+              interceptorCalls[this.status](this);
+            }
           }
         },
         false
