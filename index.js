@@ -94,7 +94,7 @@ const customMap = {
     console.log('hello');
   },
 };
-RequestGuard([interceptor, anotherInterceptor]);
+RequestGuard([interceptor, anotherInterceptor], { map: customMap });
 
 // Write Javascript code!
 const appDiv = document.getElementById('app');
